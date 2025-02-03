@@ -1,0 +1,20 @@
+div{
+    background-color: aqua;
+    border: 5px solid magenta;
+    padding: 50px;
+    margin: 50px;
+    border-radius: 10px;
+    box-shadow: 5px 20px 200px blue;
+    font-size: 20px;
+}
+div:hover{
+    background-color: blue;
+}
+h1{
+    color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
