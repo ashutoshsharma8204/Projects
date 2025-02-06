@@ -1,21 +1,43 @@
-import React, { useState } from "react";
-import "./App.css";
+import React, { useState } from 'react';
+import './App.css';
 
-function App() {
-  const [darkMode, setDarkMode] = useState(false);
+const App = () => {
+  const [filter, setFilter] = useState('');
+  const items = ['Apple', 'Banana', 'Orange', 'Mango', 'Pineapple'];
 
-  const toggleTheme = () => {
-    setDarkMode(!darkMode);
+  const handleFilterChange = (e) => {
+    setFilter(e.target.value);
   };
 
+  const filteredItems = items.filter(item =>
+    item.toLowerCase().includes(filter.toLowerCase())
+  );
+
   return (
-    <div className={`container ${darkMode ? "dark" : "light"}`}>
-      <h1>{darkMode ? "Dark Mode" : "Light Mode"}</h1>
-      <button className="toggle-btn" onClick={toggleTheme}>
-        {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-      </button>
+    <div>
+      <header className="header">
+        <h1>Item List</h1>
+      </header>
+      <main className="main-content">
+        <div className="container">
+          <input
+            type="text"
+            placeholder="Filter items"
+            value={filter}
+            onChange={handleFilterChange}
+          />
+          <ul>
+            {filteredItems.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </main>
+      <footer className="footer">
+        <p>&copy; 2025 My Application</p>
+      </footer>
     </div>
   );
-}
+};
 
 export default App;
